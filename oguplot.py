@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from PyQt5 import QtGui, QtCore
+from PyQt6 import QtGui, QtCore,QtWidgets
 import serial.tools.list_ports
 import pyqtgraph as pg
 import numpy as np
@@ -106,24 +106,24 @@ def close_app():
 # already exists, if it does, then use it, otherwise, create new instance
 
 
-if not QtGui.QApplication.instance():
-    app = QtGui.QApplication([])
+if not QtWidgets.QApplication.instance():
+    app = QtWidgets.QApplication([])
 else:
-    app = QtGui.QApplication.instance()
+    app = QtWidgets.QApplication.instance()
 
-win = QtGui.QWidget()
+win = QtWidgets.QWidget()
 win.setWindowTitle("OguPlot")
 win.resize(1000, 600)
-layout = QtGui.QGridLayout()
+layout = QtWidgets.QGridLayout()
 win.setLayout(layout)
 
-b1 = QtGui.QPushButton("Poll")
+b1 = QtWidgets.QPushButton("Poll")
 b1.clicked.connect(qlewrapper)
 
-b2 = QtGui.QPushButton("Close port")
+b2 = QtWidgets.QPushButton("Close port")
 b2.clicked.connect(close_port)
 
-t1 = QtGui.QLineEdit("Enter Device Serial")
+t1 = QtWidgets.QLineEdit("Enter Device Serial")
 
 p1 = pg.PlotWidget()
 p1.setRange(yRange=[-18000, 18000])
